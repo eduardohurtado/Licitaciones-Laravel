@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Documentos extends Model
+class Documento extends Model
 {
     protected $table = 'documentos';
 
@@ -13,7 +13,7 @@ class Documentos extends Model
         'URL_documentos',
         'fecha_entrega',
         'usuario_entrega',
-        'id_cliente',
-        'id_area'
+        'id_licitaciones',
+        'id_areas'
     );
 }

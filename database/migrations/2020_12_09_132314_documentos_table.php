@@ -19,11 +19,17 @@ class DocumentosTable extends Migration
             $table->string('URL_documentos');
             $table->string('fecha_entrega');
             $table->string('usuario_entrega');
-            $table->timestamps();
 
-            // Foreign keys
-            $table->foreign('id_cliente')->references('id')->on('licitaciones');
-            $table->foreign('id_area')->references('id')->on('areas');
+            // Relations
+            $table->integer('id_licitaciones')->unsigned();
+            $table->integer('id_areas')->unsigned();
+
+            $table->timestamps();
+        });
+
+        Schema::table('documentos', function ($table) {
+            $table->foreign('id_licitaciones')->references('id')->on('licitaciones');
+            $table->foreign('id_areas')->references('id')->on('areas');
         });
     }
 

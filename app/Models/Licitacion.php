@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Licitaciones extends Model
+class Licitacion extends Model
 {
-    protected $table = 'fabricantes';
+    protected $table = 'licitaciones';
 
     protected $fillable = array(
         'nombre',
