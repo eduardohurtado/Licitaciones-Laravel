@@ -1,7 +1,5 @@
 <?php
 
-// namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,5 +15,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call('LicitacionSeeder');
+        $this->call('AreaSeeder');
+        $this->call('DocumentoSeeder');
     }
 }

@@ -13,7 +13,17 @@ class Documento extends Model
         'URL_documentos',
         'fecha_entrega',
         'usuario_entrega',
-        'id_licitaciones',
-        'id_areas'
+        'id_licitacion',
+        'id_area'
     );
+
+    public function licitacion()
+    {
+        return $this->belongsTo('Licitacion');
+    }
+
+    public function area()
+    {
+        return $this->belongsTo('Area');
+    }
 }

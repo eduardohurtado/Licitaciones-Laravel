@@ -21,15 +21,15 @@ class DocumentosTable extends Migration
             $table->string('usuario_entrega');
 
             // Relations
-            $table->integer('id_licitaciones')->unsigned();
-            $table->integer('id_areas')->unsigned();
+            $table->integer('id_licitacion')->unsigned();
+            $table->integer('id_area')->unsigned();
 
             $table->timestamps();
         });
 
         Schema::table('documentos', function ($table) {
-            $table->foreign('id_licitaciones')->references('id')->on('licitaciones');
-            $table->foreign('id_areas')->references('id')->on('areas');
+            $table->foreign('id_licitacion')->references('id')->on('licitaciones');
+            $table->foreign('id_area')->references('id')->on('areas');
         });
     }
 

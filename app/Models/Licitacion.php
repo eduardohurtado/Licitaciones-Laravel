@@ -15,4 +15,9 @@ class Licitacion extends Model
         'fecha_cierre',
         'fecha_presentacion_documentos'
     );
+
+    public function documentos()
+    {
+        return $this->hasMany('Documento');
+    }
 }

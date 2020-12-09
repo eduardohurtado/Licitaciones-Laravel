@@ -53,6 +53,8 @@
 
     @yield('content')
 
+    <div style="height: 50px;"></div>
+
 </body>
 
 </html>

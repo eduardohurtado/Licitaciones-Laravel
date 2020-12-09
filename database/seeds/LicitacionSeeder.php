@@ -23,7 +23,7 @@ class LicitacionSeeder extends Seeder
             Licitacion::create(
                 [
                     'nombre' => $faker->name(),
-                    'id_cliente' => $faker->numberBetween(1111, 9999),
+                    'id_cliente' => $faker->numberBetween(11111, 99999),
                     'fecha_inicio' => $faker->date(),
                     'fecha_cierre' => $faker->date(),
                     'fecha_presentacion_documentos' => $faker->date(),

@@ -14,7 +14,7 @@ class LicitacionController extends Controller
      */
     public function index()
     {
-        $licitaciones = Licitacion::orderBy('id', 'DESC')->paginate(3);
+        $licitaciones = Licitacion::orderBy('id', 'DESC')->paginate();
         return view('licitacion.index', compact('licitaciones'));
     }
 
