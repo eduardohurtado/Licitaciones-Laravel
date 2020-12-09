@@ -1,6 +1,6 @@
 @extends('shared.shared')
 @section('content')
-<div class="container" style="margin-top: 100px;">
+<div class="container" style="margin-top: 50px;">
     <div class="container">
         <div class="row p-2">
             <span style="font-size: 25px;" class="col-sm"><b>Lista Licitaciones</b></span>
@@ -16,7 +16,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">C.C.</th>
+                    <th scope="col">Identificación</th>
                     <th scope="col">Fecha Inicio</th>
                     <th scope="col">Fecha Cierre</th>
                     <th scope="col">Fecha Presentación Documentos</th>
