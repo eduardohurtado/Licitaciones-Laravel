@@ -15,7 +15,7 @@ class AreaSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             Area::create(
                 [
                     'nombre_area' => $faker->country(),

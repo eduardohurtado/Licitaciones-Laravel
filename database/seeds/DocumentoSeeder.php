@@ -20,7 +20,7 @@ class DocumentoSeeder extends Seeder
         $howManyLicitacion = Licitacion::all()->count();
         $howManyArea = Area::all()->count();
 
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 30; $i++) {
             Documento::create(
                 [
                     'nombre_documentos' => $faker->word(),
