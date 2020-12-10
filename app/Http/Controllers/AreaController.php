@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Area;
 
 class AreaController extends Controller
 {
@@ -13,7 +14,9 @@ class AreaController extends Controller
      */
     public function index()
     {
-        //
+        // return response()->json(['controller' => 'AreaController', 'status' => 'ok'], 200);
+        $data = Area::all();
+        return view('area.index')->withData($data);
     }
 
     /**

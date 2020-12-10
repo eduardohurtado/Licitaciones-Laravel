@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', 'LicitacionController');
+Route::resource('licitaciones', 'LicitacionController');
 
-// Route::get('lol', function () {
-//     $data = Licitacion::all();
-//     return view('welcome')->withData($data);
-// });
+Route::resource('areas', 'AreaController');
+
+Route::resource('documentos', 'DocumentoController');
+
+Route::get('/', function () {
+    return view('welcome');
+});

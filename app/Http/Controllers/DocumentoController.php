@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Documento;
 use Illuminate\Http\Request;
 
 class DocumentoController extends Controller
@@ -13,7 +14,8 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        //
+        $data = Documento::all();
+        return view('documento.index')->withData($data);
     }
 
     /**

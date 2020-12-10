@@ -3,23 +3,24 @@
     <div class="container" style="margin-top: 50px;">
         <div class="container">
             <div class="row p-2">
-                <span style="font-size: 25px;" class="col-sm"><b>Lista de Licitaciones</b></span>
+                <span style="font-size: 25px;" class="col-sm"><b>Lista de Documentos</b></span>
                 <div class="ml-auto">
-                    <a href="" class="btn btn-danger">Añadir Licitación</a>
+                    <a href="" class="btn btn-danger">Añadir Documento</a>
                 </div>
             </div>
         </div>
 
         <div class="table-responsive">
-            <table class="table table-striped table-bordered" id="licitacionTable">
+            <table class="table table-striped table-bordered" id="areaTable">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Fecha Inicio</th>
-                        <th scope="col">Fecha Cierre</th>
-                        <th scope="col">Fecha Presentación Documentos</th>
+                        <th scope="col">Nombre Documento</th>
+                        <th scope="col">URL Documento</th>
+                        <th scope="col">Fecha Entrega</th>
+                        <th scope="col">Usuario Entrega</th>
+                        <th scope="col">ID Licitacion</th>
+                        <th scope="col">ID Área</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -27,11 +28,12 @@
                     @foreach ($data as $item)
                         <tr>
                             <th scope="row">{{ $item->id }}</th>
-                            <td>{{ $item->nombre }}</td>
-                            <td>{{ $item->id_cliente }}</td>
-                            <td>{{ $item->fecha_inicio }}</td>
-                            <td>{{ $item->fecha_cierre }}</td>
-                            <td>{{ $item->fecha_presentacion_documentos }}</td>
+                            <td>{{ $item->nombre_documentos }}</td>
+                            <td>{{ $item->URL_documentos }}</td>
+                            <td>{{ $item->fecha_entrega }}</td>
+                            <td>{{ $item->usuario_entrega }}</td>
+                            <td>{{ $item->id_licitacion }}</td>
+                            <td>{{ $item->id_area }}</td>
                             <td class="text-center"><button class="edit-modal btn btn-info" data-info="">
                                     <i class="fa fa-edit"></i> Editar
                                 </button>
@@ -49,7 +51,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#licitacionTable').DataTable();
+            $('#areaTable').DataTable();
         });
 
     </script>

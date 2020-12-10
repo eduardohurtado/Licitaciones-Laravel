@@ -23,6 +23,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <title>Licitaciones</title>
 
     <!-- Header CSS styles -->
     <style>
@@ -31,34 +32,26 @@
         }
 
         #appHeaderTitle {
-            font-size: 40px;
+            font-size: 25px;
         }
 
         #logoAndina {
-            height: 50px;
+            height: 30px;
             width: auto;
-        }
-
-        @media only screen and (max-width: 650px) {
-            #appHeaderTitle {
-                font-size: 30px;
-            }
-
-            #logoAndina {
-                height: 50px;
-                width: auto;
-            }
         }
 
     </style>
 </head>
 
 <body>
+
+    {{-- Header --}}
+
     <div class="header-row" id="header-row" style="padding: 0px; overflow: hidden">
         <div class="container-fluid" style="padding: 0px">
             <div class="row">
                 <div class="d-flex justify-content-around w-100">
-                    <a class="navbar-brand logo m-4 mx-5" href="index.html">
+                    <a class="navbar-brand logo m-4 mx-5" href="/">
                         <img src="https://andinaseguridad.com.co/wp-content/uploads/2020/07/weblogo1.png"
                             alt="Andina logo" id="logoAndina" />
                     </a>
@@ -67,6 +60,38 @@
             </div>
         </div>
     </div>
+
+    {{-- Nav Bar --}}
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #eee;">
+        <a class="navbar-brand" style="cursor: default">Navegación</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="licitaciones">Licitaciones <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="areas">Áreas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="documentos">Documentos</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Opciones
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/">Salir</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     @yield('content')
 
