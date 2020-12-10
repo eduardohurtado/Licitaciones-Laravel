@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Licitacion;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::resource('/', 'LicitacionController');
+
+// Route::get('lol', function () {
+//     $data = Licitacion::all();
+//     return view('welcome')->withData($data);
+// });
