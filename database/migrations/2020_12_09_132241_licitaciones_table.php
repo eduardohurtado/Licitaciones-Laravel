@@ -16,7 +16,7 @@ class LicitacionesTable extends Migration
         Schema::create('licitaciones', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('id_cliente');
+            $table->string('id_cliente');
             $table->string('fecha_inicio');
             $table->string('fecha_cierre');
             $table->string('fecha_presentacion_documentos');

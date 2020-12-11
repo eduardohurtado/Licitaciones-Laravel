@@ -1,6 +1,17 @@
 @extends('layouts.layout')
 @section('content')
     <div class="container" style="margin-top: 50px;">
+
+        {{-- Custom messages --}}
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        {{-- Body --}}
+
         <div class="container">
             <div class="row p-2">
                 <span style="font-size: 25px;" class="col-sm"><b>Lista de Licitaciones</b></span>
@@ -16,11 +27,12 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">ID</th>
+                        <th scope="col">Identificación</th>
                         <th scope="col">Fecha Inicio</th>
                         <th scope="col">Fecha Cierre</th>
                         <th scope="col">Fecha Presentación Documentos</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,12 +45,14 @@
                             <td>{{ $item->fecha_cierre }}</td>
                             <td>{{ $item->fecha_presentacion_documentos }}</td>
                             <td class="text-center">
-                                <button class="edit-modal btn btn-info" data-info="">
+                                <a class="btn btn-info" href="{{ action('LicitacionController@edit', $item->id) }}">
                                     <i class="fa fa-edit"></i>
-                                </button>
-                                <button class="delete-modal btn btn-danger" data-info="">
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-danger">
                                     <i class="fa fa-trash"></i>
-                                </button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

@@ -4,9 +4,6 @@
         <div class="container">
             <div class="row p-2">
                 <span style="font-size: 25px;" class="col-sm"><b>Lista de Documentos</b></span>
-                <div class="ml-auto">
-                    <a href="" class="btn btn-danger">Añadir Documento</a>
-                </div>
             </div>
         </div>
 

@@ -38,7 +38,7 @@ class LicitacionController extends Controller
     {
         $this->validate($request, [
             'nombre' => 'required',
-            'id_cliente' => 'required|numeric',
+            'id_cliente' => 'required',
             'fecha_inicio' => 'required',
             'fecha_cierre' => 'required',
             'fecha_presentacion_documentos' => 'required'
@@ -66,7 +66,8 @@ class LicitacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $licitacion = Licitacion::find($id);
+        return view('licitacion.edit', compact('licitacion'));
     }
 
     /**
