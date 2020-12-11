@@ -5,7 +5,7 @@
             <div class="row p-2">
                 <span style="font-size: 25px;" class="col-sm"><b>Lista de Licitaciones</b></span>
                 <div class="ml-auto">
-                    <a href="" class="btn btn-danger">Añadir Licitación</a>
+                    <a href="{{ action('LicitacionController@create') }}" class="btn btn-danger">Añadir Licitación</a>
                 </div>
             </div>
         </div>
@@ -32,12 +32,12 @@
                             <td>{{ $item->fecha_inicio }}</td>
                             <td>{{ $item->fecha_cierre }}</td>
                             <td>{{ $item->fecha_presentacion_documentos }}</td>
-                            <td class="text-center"><button class="edit-modal btn btn-info" data-info="">
-                                    <i class="fa fa-edit"></i> Editar
+                            <td class="text-center">
+                                <button class="edit-modal btn btn-info" data-info="">
+                                    <i class="fa fa-edit"></i>
                                 </button>
                                 <button class="delete-modal btn btn-danger" data-info="">
                                     <i class="fa fa-trash"></i>
-                                    Borrar
                                 </button>
                             </td>
                         </tr>

@@ -25,7 +25,7 @@ class LicitacionController extends Controller
      */
     public function create()
     {
-        //
+        return view('licitacion.create');
     }
 
     /**
@@ -36,7 +36,15 @@ class LicitacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required',
+            'id_cliente' => 'required|numeric',
+            'fecha_inicio' => 'required',
+            'fecha_cierre' => 'required',
+            'fecha_presentacion_documentos' => 'required'
+        ]);
+        Licitacion::create($request->all());
+        return redirect()->route('licitaciones.index')->with('success', 'Registro creado satisfactoriamente');
     }
 
     /**

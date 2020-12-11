@@ -1,76 +1,65 @@
 @extends('layouts.layout')
 @section('content')
-<div class="row">
-    <section class="content">
+    <div class="container mt-5 d-flex justify-content-center">
         <div class="col-md-8 col-md-offset-2">
             @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Error!</strong> Revise los campos obligatorios.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-            @if(Session::has('success'))
-            <div class="alert alert-info">
-                {{Session::get('success')}}
-            </div>
-            @endif
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Nueva Licitación</h3>
+                <div class="alert alert-danger">
+                    <strong>¡Error!</strong> Por favor revise los campos obligatorios.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="panel-body">
-                    <div class="table-container">
-                        <form method="POST" action="" role="form">
-                            {{ csrf_field() }}
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" name="nombre" id="nombre" class="form-control input-sm" placeholder="Nombre del libro">
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" name="npagina" id="npagina" class="form-control input-sm" placeholder="Número de Páginas">
-                                    </div>
-                                </div>
-                            </div>
+            @endif
+            @if (Session::has('success'))
+                <div class="alert alert-info">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
 
-                            <div class="form-group">
-                                <textarea name="resumen" class="form-control input-sm" placeholder="Resumen"></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" name="edicion" id="edicion" class="form-control input-sm" placeholder="Edición del libro">
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" name="precio" id="precio" class="form-control input-sm" placeholder="Precio del libro">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <textarea name="autor" class="form-control input-sm" placeholder="Autor"></textarea>
-                            </div>
-                            <div class="row">
+            <h2>Nueva Licitación</h2>
 
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <input type="submit" value="Guardar" class="btn btn-success btn-block">
-                                    <a href="" class="btn btn-info btn-block">Atrás</a>
-                                </div>
-
-                            </div>
-                        </form>
+            <form method="POST" action="{{ route('licitaciones.store') }}" role="form">
+                {{ csrf_field() }}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Nombre Cliente</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="Ingrese nombre">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Identificación Cliente</label>
+                        <input type="number" class="form-control" name="id_cliente" placeholder="Ingrese identificación">
                     </div>
                 </div>
-
-            </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Fecha de Inicio</label>
+                        <input type="text" class="form-control datepicker" name="fecha_inicio" placeholder="dd/mm/aa">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Fecha de Cierre</label>
+                        <input type="text" class="form-control datepicker" name="fecha_cierre" placeholder="dd/mm/aa">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Fecha de Presentación de Documentos</label>
+                        <input type="text" class="form-control datepicker" name="fecha_presentacion_documentos" placeholder="dd/mm/aa">
+                    </div>
+                </div>
+                <input type="submit" value="Enviar" class="btn btn-success btn-block">
+            </form>
         </div>
-    </section>
-    @endsection
+    </div>
+
+    <script type="text/javascript">
+        // DatePicker Selector
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            language: "es",
+            autoclose: true
+        });
+
+    </script>
+@endsection

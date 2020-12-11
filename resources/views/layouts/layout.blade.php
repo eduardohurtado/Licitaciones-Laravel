@@ -23,6 +23,13 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Datepicker Files -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.standalone.min.css') }}">
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <!-- Languaje -->
+    <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
+
     <title>Licitaciones</title>
 
     <!-- Header CSS styles -->
@@ -72,13 +79,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="licitaciones">Licitaciones <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/licitaciones">Licitaciones <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="areas">Áreas</a>
+                    <a class="nav-link" href="/areas">Áreas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="documentos">Documentos</a>
+                    <a class="nav-link" href="/documentos">Documentos</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
