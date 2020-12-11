@@ -15,6 +15,7 @@ class LicitacionController extends Controller
     public function index()
     {
         $data = Licitacion::all();
+
         return view('licitacion.index')->withData($data);
     }
 
@@ -43,8 +44,10 @@ class LicitacionController extends Controller
             'fecha_cierre' => 'required',
             'fecha_presentacion_documentos' => 'required'
         ]);
+
         Licitacion::create($request->all());
-        return redirect()->route('licitaciones.index')->with('success', 'Registro creado satisfactoriamente');
+
+        return redirect()->route('licitaciones.index')->with('success', 'Licitación creada satisfactoriamente');
     }
 
     /**
@@ -67,8 +70,19 @@ class LicitacionController extends Controller
     public function edit($id)
     {
         $licitacion = Licitacion::find($id);
+
         return view('licitacion.edit', compact('licitacion'));
     }
+
+    // public function withRelacionDocumentos($id)
+    // {
+    //     $licitacion = Licitacion::with('documentos')->get();
+
+    //     error_log($licitacion);
+
+    //     return view('licitacion.edit', compact('licitacion'));
+    // }
+
 
     /**
      * Update the specified resource in storage.

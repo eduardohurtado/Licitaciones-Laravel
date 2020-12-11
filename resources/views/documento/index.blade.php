@@ -18,7 +18,8 @@
                         <th scope="col">Usuario Entrega</th>
                         <th scope="col">ID Licitacion</th>
                         <th scope="col">ID Área</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,13 +32,15 @@
                             <td>{{ $item->usuario_entrega }}</td>
                             <td>{{ $item->id_licitacion }}</td>
                             <td>{{ $item->id_area }}</td>
-                            <td class="text-center"><button class="edit-modal btn btn-info" data-info="">
-                                    <i class="fa fa-edit"></i> Editar
-                                </button>
-                                <button class="delete-modal btn btn-danger" data-info="">
+                            <td class="text-center">
+                                <a class="btn btn-info" href="">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="">
                                     <i class="fa fa-trash"></i>
-                                    Borrar
-                                </button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

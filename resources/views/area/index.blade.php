@@ -1,11 +1,22 @@
 @extends('layouts.layout')
 @section('content')
     <div class="container" style="margin-top: 50px;">
+
+        {{-- Custom messages --}}
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        {{-- Body --}}
+
         <div class="container">
             <div class="row p-2">
                 <span style="font-size: 25px;" class="col-sm"><b>Lista de Áreas</b></span>
                 <div class="ml-auto">
-                    <a href="" class="btn btn-danger">Añadir Área</a>
+                    <a href="{{ action('AreaController@create') }}" class="btn btn-danger">Añadir Área</a>
                 </div>
             </div>
         </div>
@@ -16,7 +27,8 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre Del Area</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,13 +36,15 @@
                         <tr>
                             <th scope="row">{{ $item->id }}</th>
                             <td>{{ $item->nombre_area }}</td>
-                            <td class="text-center"><button class="edit-modal btn btn-info" data-info="">
-                                    <i class="fa fa-edit"></i> Editar
-                                </button>
-                                <button class="delete-modal btn btn-danger" data-info="">
+                            <td class="text-center">
+                                <a class="btn btn-info" href="{{ action('AreaController@edit', $item->id) }}">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-danger" href="">
                                     <i class="fa fa-trash"></i>
-                                    Borrar
-                                </button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

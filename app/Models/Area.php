@@ -12,6 +12,6 @@ class Area extends Model
 
     public function documentos()
     {
-        return $this->hasMany('Documento');
+        return $this->hasMany('App\Models\Documento');
     }
 }

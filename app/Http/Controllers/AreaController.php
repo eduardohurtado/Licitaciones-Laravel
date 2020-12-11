@@ -14,8 +14,8 @@ class AreaController extends Controller
      */
     public function index()
     {
-        // return response()->json(['controller' => 'AreaController', 'status' => 'ok'], 200);
         $data = Area::all();
+
         return view('area.index')->withData($data);
     }
 
@@ -26,7 +26,7 @@ class AreaController extends Controller
      */
     public function create()
     {
-        //
+        return view('area.create');
     }
 
     /**
@@ -37,7 +37,13 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre_area' => 'required'
+        ]);
+
+        Area::create($request->all());
+
+        return redirect()->route('areas.index')->with('success', 'Área creada satisfactoriamente');
     }
 
     /**
@@ -59,7 +65,9 @@ class AreaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Area::find($id);
+
+        return view('area.edit')->withData($data);
     }
 
     /**
@@ -71,7 +79,13 @@ class AreaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nombre_area' => 'required'
+        ]);
+
+        Area::find($id)->update($request->all());
+
+        return redirect()->route('areas.index')->with('success', 'Nombre del área actualizado satisfactoriamente');
     }
 
     /**

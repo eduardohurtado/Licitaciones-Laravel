@@ -15,6 +15,7 @@ class DocumentoController extends Controller
     public function index()
     {
         $data = Documento::all();
+
         return view('documento.index')->withData($data);
     }
 

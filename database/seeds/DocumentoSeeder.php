@@ -27,8 +27,8 @@ class DocumentoSeeder extends Seeder
                     'URL_documentos' => $faker->url(),
                     'fecha_entrega' => $faker->date(),
                     'usuario_entrega' => $faker->date(),
-                    'id_licitacion' => $faker->numberBetween(1, $howManyLicitacion),
-                    'id_area' => $faker->numberBetween(1, $howManyArea)
+                    'licitacion_id' => $faker->numberBetween(1, $howManyLicitacion),
+                    'area_id' => $faker->numberBetween(1, $howManyArea)
                 ]
             );
         }
