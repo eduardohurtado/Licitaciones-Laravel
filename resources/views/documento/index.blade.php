@@ -23,15 +23,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $item)
+                    @foreach ($data as $key => $item)
                         <tr>
-                            <th scope="row">{{ $item->id }}</th>
+                            <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $item->nombre_documentos }}</td>
                             <td>{{ $item->URL_documentos }}</td>
                             <td>{{ $item->fecha_entrega }}</td>
                             <td>{{ $item->usuario_entrega }}</td>
-                            <td>{{ $item->id_licitacion }}</td>
-                            <td>{{ $item->id_area }}</td>
+                            <td>{{ $item->licitacion_id }}</td>
+                            <td>{{ $item->area_id }}</td>
                             <td class="text-center">
                                 <a class="btn btn-info" href="">
                                     <i class="fa fa-edit"></i>

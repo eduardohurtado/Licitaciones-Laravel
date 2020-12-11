@@ -36,9 +36,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $item)
+                    @foreach ($data as $key => $item)
                         <tr>
-                            <th scope="row">{{ $item->id }}</th>
+                            <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $item->nombre }}</td>
                             <td>{{ $item->id_cliente }}</td>
                             <td>{{ $item->fecha_inicio }}</td>

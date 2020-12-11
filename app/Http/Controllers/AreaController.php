@@ -14,6 +14,9 @@ class AreaController extends Controller
      */
     public function index()
     {
+        // $documentos = Area::with('documentos')->get();
+        // error_log($documentos);
+
         $data = Area::all();
 
         return view('area.index')->withData($data);
@@ -96,6 +99,24 @@ class AreaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Verify if Area exist or don't
+        $area = Area::find($id);
+
+        if (!$area) {
+            return redirect()->route('areas.index')->with('danger', 'El Área seleccionada no existe.');
+        }
+
+        // Get all docs in the area
+        $docs_on_area = $area->documentos()->get();
+
+        // Verify if it has any
+        if (sizeof($docs_on_area) > 0) {
+            return redirect()->route('areas.index')->with('warning', 'El Area contiene documentos, no puede ser eliminada.');
+        }
+
+        // Proceed to delete the Area
+        $area->delete();
+
+        return redirect()->route('areas.index')->with('success', 'El Área fue eliminada exitosamente.');
     }
 }

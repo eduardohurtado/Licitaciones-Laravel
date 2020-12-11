@@ -10,6 +10,18 @@
             </div>
         @endif
 
+        @if (session('warning'))
+            <div class="alert alert-warning">
+                {{ session('warning') }}
+            </div>
+        @endif
+
+        @if (session('danger'))
+            <div class="alert alert-danger">
+                {{ session('danger') }}
+            </div>
+        @endif
+
         {{-- Body --}}
 
         <div class="container">
@@ -32,9 +44,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $item)
+                    @foreach ($data as $key => $item)
                         <tr>
-                            <th scope="row">{{ $item->id }}</th>
+                            <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $item->nombre_area }}</td>
                             <td class="text-center">
                                 <a class="btn btn-info" href="{{ action('AreaController@edit', $item->id) }}">
@@ -42,9 +54,14 @@
                                 </a>
                             </td>
                             <td class="text-center">
-                                <a class="btn btn-danger" href="">
-                                    <i class="fa fa-trash"></i>
-                                </a>
+                                <form action="{{ action('AreaController@destroy', $item->id) }}" method="post">
+                                    {{ csrf_field() }}
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button onclick="return confirm('¿Esta seguro de eliminar el Área?')"
+                                        class="btn btn-danger btn-xs" type="submit">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
