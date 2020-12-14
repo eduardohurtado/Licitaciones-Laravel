@@ -88,7 +88,7 @@
                                 </td>
                                 <td class="d-flex justify-content-center">
                                     <div class="mr-3">
-                                        <a class="btn btn-danger" href="">
+                                        <a class="btn btn-danger" href="{{ route('documentos.edit', $item->id) }}">
                                             <i class="fa fa-edit"></i> Editar
                                         </a>
                                     </div>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
 use App\Models\Documento;
+use App\Models\Licitacion;
 use Illuminate\Http\Request;
 
 class DocumentoController extends Controller
@@ -59,7 +61,15 @@ class DocumentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Document and relations
+        $doc = Documento::find($id);
+        $doc_lici = Licitacion::find($doc->licitacion_id);
+        $doc_area = Area::find($doc->area_id);
+
+        // All areas
+        $areas = Area::all();
+
+        return view('documento.edit', compact('doc', 'doc_lici', 'doc_area', 'areas'));
     }
 
     /**
@@ -71,7 +81,21 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nombre_documentos' => 'required',
+            'URL_documentos' => 'required',
+            'fecha_entrega' => 'required',
+            'usuario_entrega' => 'required',
+            'area_id' => 'required'
+        ]);
+
+        // Update
+        Documento::find($id)->update($request->all());
+
+        // Current licitacion
+        $doc = Documento::find($id);
+
+        return redirect()->route('licitaciones.show', $doc->licitacion_id)->with('success', 'Documento actualizado satisfactoriamente');
     }
 
     /**
