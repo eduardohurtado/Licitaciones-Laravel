@@ -28,7 +28,7 @@
             <div class="row p-2">
                 <span style="font-size: 25px;" class="col-sm"><b>Lista de Licitaciones</b></span>
                 <div class="ml-auto">
-                    <a href="{{ action('LicitacionController@create') }}" class="btn btn-danger">Añadir Licitación</a>
+                    <a href="{{ action('LicitacionController@create') }}" class="btn btn-danger">Crear Licitación</a>
                 </div>
             </div>
         </div>

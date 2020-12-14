@@ -45,10 +45,13 @@
                 <div class="form-row">
                     <div class="form-group col">
                         <label>Fecha de Presentación de Documentos</label>
-                        <input type="text" class="form-control datepicker" name="fecha_presentacion_documentos" placeholder="dd/mm/aa">
+                        <input type="text" class="form-control datepicker" name="fecha_presentacion_documentos"
+                            placeholder="dd/mm/aa">
                     </div>
                 </div>
+
                 <input type="submit" value="Enviar" class="btn btn-success btn-block">
+                <a href="{{ action('LicitacionController@index') }}" class="btn btn-danger btn-block">Regresar</a>
             </form>
         </div>
     </div>

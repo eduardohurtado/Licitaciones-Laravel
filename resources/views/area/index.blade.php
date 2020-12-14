@@ -28,7 +28,7 @@
             <div class="row p-2">
                 <span style="font-size: 25px;" class="col-sm"><b>Lista de Áreas</b></span>
                 <div class="ml-auto">
-                    <a href="{{ action('AreaController@create') }}" class="btn btn-danger">Añadir Área</a>
+                    <a href="{{ action('AreaController@create') }}" class="btn btn-danger">Crear Área</a>
                 </div>
             </div>
         </div>

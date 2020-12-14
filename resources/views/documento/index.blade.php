@@ -16,8 +16,8 @@
                         <th scope="col">URL Documento</th>
                         <th scope="col">Fecha Entrega</th>
                         <th scope="col">Usuario Entrega</th>
-                        <th scope="col">ID Licitacion</th>
-                        <th scope="col">ID Área</th>
+                        <th scope="col">Licitación</th>
+                        <th scope="col">Área</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,8 +28,20 @@
                             <td>{{ $item->URL_documentos }}</td>
                             <td>{{ $item->fecha_entrega }}</td>
                             <td>{{ $item->usuario_entrega }}</td>
-                            <td>{{ $item->licitacion_id }}</td>
-                            <td>{{ $item->area_id }}</td>
+                            <td>@php
+
+                                $current_lici= App\Models\Licitacion::find($item->licitacion_id)
+
+                                @endphp
+                                {{ $current_lici->nombre }}
+                            </td>
+                            <td>@php
+
+                                $current_area= App\Models\Area::find($item->area_id)
+
+                                @endphp
+                                {{ $current_area->nombre_area }}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -29,7 +29,8 @@
             <div class="col-sm">
                 <h2><b>Licitación N°: {{ $lici->id }}</b></h2>
 
-                <h3>Nombre: {{ $lici->nombre }}</h3>
+                <h4>Nombre: {{ $lici->nombre }}</h4>
+                <h4>Identificación: {{ $lici->id_cliente }}</h4>
             </div>
 
             <div class="col-sm text-right">
@@ -50,7 +51,7 @@
             </div>
         </div>
 
-        <div class="container-fluid mt-5">
+        <div class="container-fluid mt-3">
             <div class="d-flex text-center justify-content-center">
                 <h3>DOCUMENTOS</h3>
             </div>
@@ -64,8 +65,8 @@
                             <th scope="col">URL Documento</th>
                             <th scope="col">Fecha Entrega</th>
                             <th scope="col">Usuario Entrega</th>
-                            <th scope="col">ID Licitacion</th>
-                            <th scope="col">ID Área</th>
+                            <th scope="col">Área</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,8 +77,31 @@
                                 <td>{{ $item->URL_documentos }}</td>
                                 <td>{{ $item->fecha_entrega }}</td>
                                 <td>{{ $item->usuario_entrega }}</td>
-                                <td>{{ $item->licitacion_id }}</td>
-                                <td>{{ $item->area_id }}</td>
+                                {{-- Querying Area name from current Document
+                                --}}
+                                <td>@php
+
+                                    $current_area= App\Models\Area::find($item->area_id)
+
+                                    @endphp
+                                    {{ $current_area->nombre_area }}
+                                </td>
+                                <td class="d-flex justify-content-center">
+                                    <div class="mr-3">
+                                        <a class="btn btn-danger" href="">
+                                            <i class="fa fa-edit"></i> Editar
+                                        </a>
+                                    </div>
+
+                                    <form action="" method="post">
+                                        {{ csrf_field() }}
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button onclick="return confirm('¿Esta seguro de eliminar el Documento?')"
+                                            class="btn btn-danger btn-xs" type="submit">
+                                            <i class="fa fa-trash"></i> Eliminar
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
