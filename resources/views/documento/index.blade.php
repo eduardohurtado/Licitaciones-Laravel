@@ -18,8 +18,6 @@
                         <th scope="col">Usuario Entrega</th>
                         <th scope="col">ID Licitacion</th>
                         <th scope="col">ID Área</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,16 +30,6 @@
                             <td>{{ $item->usuario_entrega }}</td>
                             <td>{{ $item->licitacion_id }}</td>
                             <td>{{ $item->area_id }}</td>
-                            <td class="text-center">
-                                <a class="btn btn-info" href="">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-danger" href="">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    {{-- Bootstrap & jQuery --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -27,7 +29,8 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.standalone.min.css') }}">
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
-    <!-- Languaje -->
+
+    <!-- Datepicker Languaje -->
     <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
 
     <title>Licitaciones</title>

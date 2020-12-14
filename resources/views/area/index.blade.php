@@ -39,8 +39,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre Del Area</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,18 +47,19 @@
                         <tr>
                             <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $item->nombre_area }}</td>
-                            <td class="text-center">
-                                <a class="btn btn-info" href="{{ action('AreaController@edit', $item->id) }}">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
+                            <td class="d-flex justify-content-center">
+                                <div class="mr-3">
+                                    <a class="btn btn-danger" href="{{ action('AreaController@edit', $item->id) }}">
+                                        <i class="fa fa-edit"></i> Editar
+                                    </a>
+                                </div>
+
                                 <form action="{{ action('AreaController@destroy', $item->id) }}" method="post">
                                     {{ csrf_field() }}
                                     <input name="_method" type="hidden" value="DELETE">
                                     <button onclick="return confirm('¿Esta seguro de eliminar el Área?')"
                                         class="btn btn-danger btn-xs" type="submit">
-                                        <i class="fa fa-trash"></i>
+                                        <i class="fa fa-trash"></i> Eliminar
                                     </button>
                                 </form>
                             </td>

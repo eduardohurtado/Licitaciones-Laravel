@@ -10,6 +10,18 @@
             </div>
         @endif
 
+        @if (session('warning'))
+            <div class="alert alert-warning">
+                {{ session('warning') }}
+            </div>
+        @endif
+
+        @if (session('danger'))
+            <div class="alert alert-danger">
+                {{ session('danger') }}
+            </div>
+        @endif
+
         {{-- Body --}}
 
         <div class="container">
@@ -31,8 +43,7 @@
                         <th scope="col">Fecha Inicio</th>
                         <th scope="col">Fecha Cierre</th>
                         <th scope="col">Fecha Presentación Documentos</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,13 +56,8 @@
                             <td>{{ $item->fecha_cierre }}</td>
                             <td>{{ $item->fecha_presentacion_documentos }}</td>
                             <td class="text-center">
-                                <a class="btn btn-info" href="{{ action('LicitacionController@edit', $item->id) }}">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a class="btn btn-danger">
-                                    <i class="fa fa-trash"></i>
+                                <a class="btn btn-danger" href="{{ action('LicitacionController@show', $item->id) }}">
+                                    Abrir
                                 </a>
                             </td>
                         </tr>

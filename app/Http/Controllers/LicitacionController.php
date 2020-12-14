@@ -58,7 +58,10 @@ class LicitacionController extends Controller
      */
     public function show($id)
     {
-        //
+        $lici = Licitacion::find($id);
+        $docs = $lici->documentos()->get();
+
+        return view('licitacion.details', compact('lici', 'docs'));
     }
 
     /**
@@ -74,16 +77,6 @@ class LicitacionController extends Controller
         return view('licitacion.edit', compact('licitacion'));
     }
 
-    // public function withRelacionDocumentos($id)
-    // {
-    //     $licitacion = Licitacion::with('documentos')->get();
-
-    //     error_log($licitacion);
-
-    //     return view('licitacion.edit', compact('licitacion'));
-    // }
-
-
     /**
      * Update the specified resource in storage.
      *
@@ -93,7 +86,17 @@ class LicitacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required',
+            'id_cliente' => 'required',
+            'fecha_inicio' => 'required',
+            'fecha_cierre' => 'required',
+            'fecha_presentacion_documentos' => 'required'
+        ]);
+
+        Licitacion::find($id)->update($request->all());
+
+        return redirect()->route('licitaciones.show', $id)->with('success', 'Licitación actualizada satisfactoriamente');
     }
 
     /**
@@ -104,6 +107,24 @@ class LicitacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Verify if exist or don't
+        $lici = Licitacion::find($id);
+
+        if (!$lici) {
+            return redirect()->route('licitaciones.index')->with('danger', 'La licitación seleccionada no existe.');
+        }
+
+        // Get all docs inside it
+        $docs_on_lici = $lici->documentos()->get();
+
+        // Verify if it has any
+        if (sizeof($docs_on_lici) > 0) {
+            return redirect()->route('licitaciones.show', $id)->with('warning', 'La licitación contiene documentos, no puede ser eliminada.');
+        }
+
+        // Proceed to delete
+        $lici->delete();
+
+        return redirect()->route('licitaciones.index')->with('success', 'La licitación fue eliminada exitosamente.');
     }
 }

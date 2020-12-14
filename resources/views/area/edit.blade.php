@@ -2,6 +2,9 @@
 @section('content')
     <div class="container mt-5 d-flex justify-content-center">
         <div class="col-md-8 col-md-offset-2">
+
+            {{-- Controller data validator --}}
+
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>¡Error!</strong> Por favor revise los campos obligatorios.<br><br>
@@ -13,11 +16,7 @@
                 </div>
             @endif
 
-            @if (Session::has('success'))
-                <div class="alert alert-info">
-                    {{ Session::get('success') }}
-                </div>
-            @endif
+            {{-- Body --}}
 
             <h2 class="panel-title">Editar nombre de Área:</h2>
 

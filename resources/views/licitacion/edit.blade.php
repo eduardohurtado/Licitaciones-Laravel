@@ -2,6 +2,9 @@
 @section('content')
     <div class="container mt-5 d-flex justify-content-center">
         <div class="col-md-8 col-md-offset-2">
+
+            {{-- Controller data validator --}}
+
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>Error!</strong> Revise los campos obligatorios.<br><br>
@@ -13,19 +16,15 @@
                 </div>
             @endif
 
-            @if (Session::has('success'))
-                <div class="alert alert-info">
-                    {{ Session::get('success') }}
-                </div>
-            @endif
-
             <h2 class="panel-title">Editar Licitacion:</h2>
             <span class="panel-title" style="font-size: 30px">"{{ $licitacion->nombre }}"</span>
 
             <div style="height: 20px"></div>
 
-            <form method="POST" action="" role="form">
+            <form method="POST" action="{{ route('licitaciones.update', $licitacion->id) }}" role="form">
                 {{ csrf_field() }}
+                {{ method_field('PUT') }}
+
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Nombre Cliente</label>
@@ -58,9 +57,9 @@
                     </div>
                 </div>
                 <input type="submit" value="Actualizar" class="btn btn-success btn-block">
-                <a href="{{ action('LicitacionController@index') }}" class="btn btn-danger btn-block">Regresar</a>
+                <a href="{{ action('LicitacionController@show', $licitacion->id) }}"
+                    class="btn btn-danger btn-block">Regresar</a>
             </form>
-
         </div>
     </div>
 
