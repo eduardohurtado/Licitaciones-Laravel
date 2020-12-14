@@ -89,10 +89,10 @@ class DocumentoController extends Controller
             'area_id' => 'required'
         ]);
 
-        // Update
+        // Update document
         Documento::find($id)->update($request->all());
 
-        // Current licitacion
+        // Current document
         $doc = Documento::find($id);
 
         return redirect()->route('licitaciones.show', $doc->licitacion_id)->with('success', 'Documento actualizado satisfactoriamente');
@@ -106,6 +106,12 @@ class DocumentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Current document
+        $doc = Documento::find($id);
+
+        // Delete document
+        Documento::find($id)->delete();
+
+        return redirect()->route('licitaciones.show', $doc->licitacion_id)->with('success', 'Documento eliminado satisfactoriamente');
     }
 }

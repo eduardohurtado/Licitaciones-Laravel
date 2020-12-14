@@ -93,7 +93,7 @@
                                         </a>
                                     </div>
 
-                                    <form action="" method="post">
+                                    <form action="{{ action('DocumentoController@destroy', $item->id) }}" method="post">
                                         {{ csrf_field() }}
                                         <input name="_method" type="hidden" value="DELETE">
                                         <button onclick="return confirm('¿Esta seguro de eliminar el Documento?')"
@@ -107,6 +107,8 @@
                     </tbody>
                 </table>
             </div>
+
+            <input type="button" value="Añadir Nuevo Documento" class="btn btn-danger">
         </div>
     </div>
 
