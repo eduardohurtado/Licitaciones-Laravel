@@ -13,12 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('documentos/create_document/{id}', 'DocumentoController@createDocument')->name('documentos.createWithID');
+
+Route::any('documentos/store_document/{id}', 'DocumentoController@storeDocument')->name('documentos.storeWithID');
+
 Route::resource('licitaciones', 'LicitacionController');
 
 Route::resource('areas', 'AreaController');
 
 Route::resource('documentos', 'DocumentoController');
-
-Route::get('/', function () {
-    return view('welcome');
-});

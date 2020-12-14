@@ -31,15 +31,43 @@ class DocumentoController extends Controller
         //
     }
 
+    public function createDocument($id)
+    {
+        // Current Licitacion
+        $lici = Licitacion::find($id);
+
+        // All areas
+        $areas = Area::all();
+
+        return view('documento.create', compact('lici', 'areas'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         //
+    }
+
+    public function storeDocument(Request $request, $id)
+    {
+        $this->validate($request, [
+            'licitacion_id' => 'required',
+            'nombre_documentos' => 'required',
+            'URL_documentos' => 'required',
+            'fecha_entrega' => 'required',
+            'usuario_entrega' => 'required',
+            'area_id' => 'required'
+        ]);
+
+        // Create new Document
+        Documento::create($request->all());
+
+        return redirect()->route('licitaciones.show', $id)->with('success', 'Documento añadido satisfactoriamente');
     }
 
     /**

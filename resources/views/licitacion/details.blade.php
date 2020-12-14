@@ -108,7 +108,9 @@
                 </table>
             </div>
 
-            <input type="button" value="Añadir Nuevo Documento" class="btn btn-danger">
+            <a class="btn btn-danger mt-3" href="{{ route('documentos.createWithID', $lici->id) }}">
+                Añadir Nuevo Documento
+            </a>
         </div>
     </div>
 
