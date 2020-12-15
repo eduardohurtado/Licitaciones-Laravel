@@ -19,10 +19,10 @@ Route::get('/', function () {
 
 Route::get('documentos/create_document/{id}', 'DocumentoController@createDocument')->name('documentos.createWithID');
 
-Route::any('documentos/store_document/{id}', 'DocumentoController@storeDocument')->name('documentos.storeWithID');
+Route::post('documentos/store_document/{id}', 'DocumentoController@storeDocument')->name('documentos.storeWithID');
 
 Route::resource('licitaciones', 'LicitacionController');
 
-Route::resource('areas', 'AreaController');
+Route::resource('areas', 'AreaController', ['except' => ['show']]);
 
-Route::resource('documentos', 'DocumentoController');
+Route::resource('documentos', 'DocumentoController', ['except' => ['store', 'create', 'show']]);

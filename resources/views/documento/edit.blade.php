@@ -56,8 +56,13 @@
                 <label>Seleccionar un área</label>
                 <select class="form-control" name="area_id">
                     <option value="{{ $doc_area->id }}" selected>{{ $doc_area->nombre_area }}</option>
+
                     @foreach ($areas as $area)
-                        <option value="{{ $area->id }}">{{ $area->nombre_area }}</option>
+                        {{-- Verify to remove default Documento area from list
+                        --}}
+                        @if ($area->id != $doc_area->id)
+                            <option value="{{ $area->id }}">{{ $area->nombre_area }}</option>
+                        @endif
                     @endforeach
                 </select>
 

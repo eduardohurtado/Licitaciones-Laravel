@@ -16,9 +16,9 @@ class LicitacionSeeder extends Seeder
         // Creamos una instancia de Faker
         $faker = Faker::create();
 
-        // Creamos un bucle para cubrir 5 Licitaciones:
+        // Creamos un bucle para cubrir 20 Licitaciones:
         for ($i = 1; $i <= 20; $i++) {
-            // Cuando llamamos al método create del Modelo Fabricante
+            // Cuando llamamos al método create del Modelo Licitacion
             // se está creando una nueva fila en la tabla.
             Licitacion::create(
                 [
