@@ -72,7 +72,7 @@
             $('#licitacionTable').DataTable({
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros",
-                    "zeroRecords": "No se encuentra el registro",
+                    "zeroRecords": "No hay registros disponibles",
                     "info": "Página _PAGE_ de _PAGES_",
                     "infoEmpty": "No hay registros disponibles",
                     "infoFiltered": "(filtrado de _MAX_ registros)",

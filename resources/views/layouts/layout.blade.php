@@ -50,6 +50,10 @@
             width: auto;
         }
 
+        .navShadow:hover {
+            background: #ccc;
+        }
+
     </style>
 </head>
 
@@ -74,30 +78,21 @@
     {{-- Nav Bar --}}
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #eee;">
-        <a class="navbar-brand" style="cursor: default">Navegación</a>
+        <a class="navbar-brand" style="cursor: default"><b>Navegación</b></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/licitaciones">Licitaciones <span class="sr-only">(current)</span></a>
+                <li class="nav-item navShadow">
+                    <a class="nav-link active" href="/licitaciones">Licitaciones</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/areas">Áreas</a>
+                <li class="nav-item navShadow">
+                    <a class="nav-link active" href="/areas">Áreas</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/documentos">Documentos</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Opciones
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/">Salir</a>
-                    </div>
+                <li class="nav-item navShadow">
+                    <a class="nav-link active" href="/documentos">Documentos</a>
                 </li>
             </ul>
         </div>
@@ -108,7 +103,10 @@
     @yield('content')
 
     <div style="height: 50px;"></div>
-
 </body>
+
+<script>
+
+</script>
 
 </html>

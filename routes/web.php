@@ -17,9 +17,9 @@ Route::get('/', function () {
     return redirect('licitaciones');
 });
 
-Route::get('documentos/create_document/{id}', 'DocumentoController@createDocument')->name('documentos.createWithID');
+Route::get('documentos/create_document/{id}', 'DocumentoController@createDocument')->name('documentos.createDocument');
 
-Route::post('documentos/store_document/{id}', 'DocumentoController@storeDocument')->name('documentos.storeWithID');
+Route::post('documentos/store_document/{id}', 'DocumentoController@storeDocument')->name('documentos.storeDocument');
 
 Route::resource('licitaciones', 'LicitacionController');
 

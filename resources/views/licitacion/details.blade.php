@@ -62,7 +62,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nombre Documento</th>
-                            <th scope="col">URL Documento</th>
+                            <th scope="col">Enlace Documento</th>
                             <th scope="col">Fecha Entrega</th>
                             <th scope="col">Usuario Entrega</th>
                             <th scope="col">Área</th>
@@ -74,7 +74,11 @@
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $item->nombre_documentos }}</td>
-                                <td>{{ $item->URL_documentos }}</td>
+                                <td>
+                                    <a href="{{ $item->URL_documentos }}" target="blank" class="btn btn-primary">
+                                        Descargar
+                                    </a>
+                                </td>
                                 <td>{{ $item->fecha_entrega }}</td>
                                 <td>{{ $item->usuario_entrega }}</td>
                                 {{-- Querying Area name from current Document
@@ -108,7 +112,7 @@
                 </table>
             </div>
 
-            <a class="btn btn-danger mt-3" href="{{ route('documentos.createWithID', $lici->id) }}">
+            <a class="btn btn-danger mt-3" href="{{ route('documentos.createDocument', $lici->id) }}">
                 Añadir Nuevo Documento
             </a>
         </div>
@@ -119,7 +123,7 @@
             $('#areaTable').DataTable({
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros",
-                    "zeroRecords": "No se encuentra el registro",
+                    "zeroRecords": "No hay registros disponibles",
                     "info": "Página _PAGE_ de _PAGES_",
                     "infoEmpty": "No hay registros disponibles",
                     "infoFiltered": "(filtrado de _MAX_ registros)",

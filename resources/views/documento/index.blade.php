@@ -25,7 +25,11 @@
                         <tr>
                             <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $item->nombre_documentos }}</td>
-                            <td>{{ $item->URL_documentos }}</td>
+                            <td>
+                                <a href="{{ $item->URL_documentos }}" target="blank" class="btn btn-primary">
+                                    Descargar
+                                </a>
+                            </td>
                             <td>{{ $item->fecha_entrega }}</td>
                             <td>{{ $item->usuario_entrega }}</td>
                             <td>@php
@@ -54,7 +58,7 @@
             $('#areaTable').DataTable({
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros",
-                    "zeroRecords": "No se encuentra el registro",
+                    "zeroRecords": "No hay registros disponibles",
                     "info": "Página _PAGE_ de _PAGES_",
                     "infoEmpty": "No hay registros disponibles",
                     "infoFiltered": "(filtrado de _MAX_ registros)",

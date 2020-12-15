@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Area;
 use App\Models\Documento;
 use App\Models\Licitacion;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class DocumentoController extends Controller
 {
@@ -58,14 +60,31 @@ class DocumentoController extends Controller
         $this->validate($request, [
             'licitacion_id' => 'required',
             'nombre_documentos' => 'required',
-            'URL_documentos' => 'required',
+            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,docx',
             'fecha_entrega' => 'required',
             'usuario_entrega' => 'required',
             'area_id' => 'required'
         ]);
 
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $filePath = URL::to('/uploads/documentos/' . $fileName);
+
+            $request->file->move(public_path('uploads/documentos/'), $fileName);
+        }
+
+        // Create an array to save a new Documento
+        $newDocument = array(
+            'licitacion_id' => $request->licitacion_id,
+            'nombre_documentos' => $request->nombre_documentos,
+            'URL_documentos' => $filePath,
+            'fecha_entrega' => $request->fecha_entrega,
+            'usuario_entrega' => $request->usuario_entrega,
+            'area_id' => $request->area_id
+        );
+
         // Create new Document
-        Documento::create($request->all());
+        Documento::create($newDocument);
 
         return redirect()->route('licitaciones.show', $id)->with('success', 'Documento añadido satisfactoriamente');
     }
@@ -136,6 +155,14 @@ class DocumentoController extends Controller
     {
         // Current document
         $doc = Documento::find($id);
+        $url = $doc->URL_documentos;
+
+        // Get the filename
+        $get_filename = preg_split("/\//", $url);
+        $filename_path = 'uploads/documentos/' . array_pop($get_filename);
+
+        // Delete the Document
+        File::delete($filename_path);
 
         // Delete document
         Documento::find($id)->delete();

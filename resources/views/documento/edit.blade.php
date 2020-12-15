@@ -36,7 +36,7 @@
                     <div class="form-group col-md-6">
                         <label>URL de documento/s</label>
                         <input type="text" class="form-control" name="URL_documentos" placeholder="Ingrese nombre"
-                            value="{{ $doc->URL_documentos }}">
+                            value="{{ $doc->URL_documentos }}" readonly>
                     </div>
                 </div>
 

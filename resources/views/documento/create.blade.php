@@ -22,7 +22,8 @@
 
             <h4 class="mt-3">LICITACIÓN: "{{ $lici->nombre }}"</h4>
 
-            <form method="POST" action="{{ route('documentos.storeWithID', $lici->id) }}" role="form">
+            <form method="POST" action="{{ route('documentos.storeDocument', $lici->id) }}" role="form"
+                enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="form-row">
@@ -31,13 +32,20 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label>Nombre</label>
+                        <label>Nombre Documento</label>
                         <input type="text" class="form-control" name="nombre_documentos" placeholder="Ingrese nombre">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label>URL de documento/s</label>
+                        {{-- <label>URL de documento/s</label>
                         <input type="text" class="form-control" name="URL_documentos" placeholder="Ingrese nombre">
+                        --}}
+
+                        <label>Seleccionar Documento</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="file" id="inputFileDoc" />
+                            <label class="custom-file-label" for="inputFileDoc">Seleccionar archivo</label>
+                        </div>
                     </div>
                 </div>
 
@@ -66,11 +74,21 @@
     </div>
 
     <script type="text/javascript">
-        // DatePicker Selector
-        $('.datepicker').datepicker({
-            format: "dd/mm/yyyy",
-            language: "es",
-            autoclose: true
+        $(document).ready(function() {
+            // DatePicker Selector
+            $('.datepicker').datepicker({
+                format: "dd/mm/yyyy",
+                language: "es",
+                autoclose: true
+            });
+
+            // Put custom file name
+            $('#inputFileDoc').on('change', function() {
+                //get the file name
+                var fileName = $(this).val().split('\\').pop();
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            })
         });
 
     </script>
