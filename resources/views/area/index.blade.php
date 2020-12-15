@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="table-responsive">
+        <div class="table-responsive p-1">
             <table class="table table-striped table-bordered" id="areaTable">
                 <thead class="thead-dark">
                     <tr>
@@ -88,7 +88,8 @@
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-                }
+                },
+                "responsive": true,
             });
         });
 

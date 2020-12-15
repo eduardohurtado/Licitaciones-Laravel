@@ -60,7 +60,7 @@ class DocumentoController extends Controller
         $this->validate($request, [
             'licitacion_id' => 'required',
             'nombre_documentos' => 'required',
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,docx',
+            'file' => 'required|mimes:csv,pptx,txt,xlx,xls,xlsx,pdf,doc,docx',
             'fecha_entrega' => 'required',
             'usuario_entrega' => 'required',
             'area_id' => 'required'
@@ -161,7 +161,7 @@ class DocumentoController extends Controller
         $get_filename = preg_split("/\//", $url);
         $filename_path = 'uploads/documentos/' . array_pop($get_filename);
 
-        // Delete the Document
+        // Delete the file associated to the current Document
         File::delete($filename_path);
 
         // Delete document

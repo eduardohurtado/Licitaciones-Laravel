@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <div class="table-responsive">
+        <div class="table-responsive p-1">
             <table class="table table-striped table-bordered" id="areaTable">
                 <thead class="thead-dark">
                     <tr>
@@ -25,7 +25,7 @@
                         <tr>
                             <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $item->nombre_documentos }}</td>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{ $item->URL_documentos }}" target="blank" class="btn btn-primary">
                                     Descargar
                                 </a>
@@ -71,7 +71,8 @@
                         "next": "Siguiente",
                         "previous": "Anterior"
                     }
-                }
+                },
+                "responsive": true,
             });
         });
 
