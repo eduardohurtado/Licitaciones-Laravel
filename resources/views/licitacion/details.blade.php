@@ -25,7 +25,7 @@
 
         {{-- Body --}}
 
-        <div class="row">
+        <div class="row p-2" style="background: #eee; border-radius: 5px">
             <div class="col-sm">
                 <h2><b>Licitación N°: {{ $lici->id }}</b></h2>
 
@@ -75,7 +75,8 @@
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $item->nombre_documentos }}</td>
                                 <td class="text-center">
-                                    <a href="{{ $item->URL_documentos }}" target="blank" class="btn btn-primary">
+                                    <a href="{{ route('documentos.download', $item->id) }}" target="blank"
+                                        class="btn btn-primary">
                                         Descargar
                                     </a>
                                 </td>

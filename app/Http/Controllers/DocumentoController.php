@@ -8,6 +8,8 @@ use App\Models\Licitacion;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Str;
 
 class DocumentoController extends Controller
 {
@@ -66,11 +68,15 @@ class DocumentoController extends Controller
             'area_id' => 'required'
         ]);
 
+        // Get environment local storage folder path
+        $documents_storage_path = Config::get('values.documents_storage_path');
+
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = URL::to('/uploads/documentos/' . $fileName);
+            $filePath = URL::to('/' . $documents_storage_path . $fileName);
 
-            $request->file->move(public_path('uploads/documentos/'), $fileName);
+            // Storage new file
+            $request->file->move(public_path($documents_storage_path), $fileName);
         }
 
         // Create an array to save a new Documento
@@ -145,6 +151,24 @@ class DocumentoController extends Controller
         return redirect()->route('licitaciones.show', $doc->licitacion_id)->with('success', 'Documento actualizado satisfactoriamente');
     }
 
+    public function download($id)
+    {
+        // Get the document
+        $doc = Documento::find($id);
+
+        // Get old filename route
+        $old_file_name_route = Str::after(parse_url($doc->URL_documentos, PHP_URL_PATH), '/');
+
+        // Get file extension
+        $extension = Str::after($old_file_name_route, '.');
+
+        // Make new filename
+        $new_file_name = $doc->nombre_documentos . '.' . $extension;
+
+        // Rename filename before download
+        return response()->download(public_path($old_file_name_route), $new_file_name);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -157,9 +181,12 @@ class DocumentoController extends Controller
         $doc = Documento::find($id);
         $url = $doc->URL_documentos;
 
+        // Get environment local storage folder path
+        $documents_storage_path = Config::get('values.documents_storage_path');
+
         // Get the filename
         $get_filename = preg_split("/\//", $url);
-        $filename_path = 'uploads/documentos/' . array_pop($get_filename);
+        $filename_path = $documents_storage_path . array_pop($get_filename);
 
         // Delete the file associated to the current Document
         File::delete($filename_path);

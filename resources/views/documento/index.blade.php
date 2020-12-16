@@ -26,20 +26,26 @@
                             <th scope="row">{{ $key + 1 }}</th>
                             <td>{{ $item->nombre_documentos }}</td>
                             <td class="text-center">
-                                <a href="{{ $item->URL_documentos }}" target="blank" class="btn btn-primary">
+                                <a href="{{ route('documentos.download', $item->id) }}" target="blank"
+                                    class="btn btn-primary">
                                     Descargar
                                 </a>
                             </td>
                             <td>{{ $item->fecha_entrega }}</td>
                             <td>{{ $item->usuario_entrega }}</td>
-                            <td>@php
+                            <td>
+                                {{-- Querying current Licitacion
+                                --}}
+                                @php
 
                                 $current_lici= App\Models\Licitacion::find($item->licitacion_id)
 
                                 @endphp
                                 {{ $current_lici->nombre }}
                             </td>
-                            <td>@php
+                            <td>
+                                {{-- Querying current Area --}}
+                                @php
 
                                 $current_area= App\Models\Area::find($item->area_id)
 

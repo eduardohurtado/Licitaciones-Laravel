@@ -37,10 +37,6 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                        {{-- <label>URL de documento/s</label>
-                        <input type="text" class="form-control" name="URL_documentos" placeholder="Ingrese nombre">
-                        --}}
-
                         <label>Seleccionar Documento</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" name="file" id="inputFileDoc" />

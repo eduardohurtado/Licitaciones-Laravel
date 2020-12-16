@@ -21,6 +21,8 @@ Route::get('documentos/create_document/{id}', 'DocumentoController@createDocumen
 
 Route::post('documentos/store_document/{id}', 'DocumentoController@storeDocument')->name('documentos.storeDocument');
 
+Route::get('documentos/download/{id}', 'DocumentoController@download')->name('documentos.download');
+
 Route::resource('licitaciones', 'LicitacionController');
 
 Route::resource('areas', 'AreaController', ['except' => ['show']]);

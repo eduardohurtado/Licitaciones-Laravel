@@ -27,16 +27,14 @@
                 {{ method_field('PUT') }}
 
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col">
                         <label>Nombre</label>
                         <input type="text" class="form-control" name="nombre_documentos" placeholder="Ingrese nombre"
                             value="{{ $doc->nombre_documentos }}">
-                    </div>
 
-                    <div class="form-group col-md-6">
-                        <label>URL de documento/s</label>
-                        <input type="text" class="form-control" name="URL_documentos" placeholder="Ingrese nombre"
-                            value="{{ $doc->URL_documentos }}" readonly>
+                        {{-- Not editable URL_documentos --}}
+                        <input type="hidden" class="form-control" name="URL_documentos" placeholder="Ingrese nombre"
+                            value="{{ $doc->URL_documentos }}">
                     </div>
                 </div>
 
