@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('licitaciones');
+    return view('welcome');
 });
 
 Route::get('documentos/create_document/{id}', 'DocumentoController@createDocument')->name('documentos.createDocument');

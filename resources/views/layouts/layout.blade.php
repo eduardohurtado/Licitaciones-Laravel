@@ -45,7 +45,7 @@
             font-size: 25px;
         }
 
-        #logoAndina {
+        #headerLogo {
             height: 30px;
             width: auto;
         }
@@ -66,8 +66,8 @@
             <div class="row">
                 <div class="d-flex justify-content-around w-100">
                     <a class="navbar-brand logo m-4 mx-5" href="/">
-                        <img src="https://andinaseguridad.com.co/wp-content/uploads/2020/07/weblogo1.png"
-                            alt="Andina logo" id="logoAndina" />
+                        <img src="https://laravel.com/assets/img/components/logo-laravel.svg"
+                            alt="Header logo" id="headerLogo" />
                     </a>
                     <span id="appHeaderTitle" class="font-weight-bold ml-auto m-4 mx-5">LICITACIONES</span>
                 </div>
