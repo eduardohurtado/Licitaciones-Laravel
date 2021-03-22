@@ -13,6 +13,39 @@ Full stack laravel web application created to manage "bids" or "licitaciones" (i
 
 #
 
+## App requirements
+
+You need to have installed [Composer](https://getcomposer.org/) on your system to run this PHP app.
+
+This app also require an PHP server, recomended: [Wamp server](https://www.wampserver.com/en/) (Or another preferer server), once installed please proceed to create an "test_licitaciones" SQL Schema, with admin user: `root` privilegies.
+
+The conection settings can be found in the ".env" project file.
+
+## Conection settings:
+
+> DB_CONNECTION=mysql<br/>
+> DB_HOST=127.0.0.1<br/>
+> DB_PORT=3306<br/>
+> DB_DATABASE=test_licitaciones<br/>
+> DB_USERNAME=root<br/>
+> DB_PASSWORD=<br/>
+
+## Install the project
+
+In the project directory, run `composer install` to download all the app dependencies.
+
+## Configure MySQL database
+
+With the PHP server running, run `php artisan migrate` in the project direcctory to migrate the MySQL app tables and relations.
+
+Then run `php artisan db:seed` to seed all the MySQL database tables with mock data.
+
+## Start the project
+
+Finally run `php artisan serve` to start a dev local php server. You can now access your project at [http://localhost:8000/](http://localhost:8000/) please enjoy :).
+
+#
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
